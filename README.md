@@ -3,6 +3,11 @@ This repository contains a software complex, developed for All-Ukrainian competi
 It consists of three CLI applications(FTX, NNT and Plotmaker)
 and a Flask web-app, which serves as a "graphical demo" for aforementioned CLI apps, allowing user to classify images using MobileNetV2 models or generate LIME-explanations with important feature filtering for ML classifiers like Random Forest, Naive Bayes etc.
 
+# Dependencies
+Before using any of these applications, please install required dependencies from `requirements.txt` file using pip: 
+
+`pip install -r requirements.txt`
+
 # FTX
 Or "FeaTure eXtractor", is used for feature extraction based on LIME.
 
