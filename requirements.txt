@@ -1,0 +1,14 @@
+Flask
+Flask_Bootstrap
+joblib
+keras
+lime
+numpy
+plotly
+scikit_learn
+tensorflow
+Werkzeug
+imbalanced_learn
+matplotlib
+scipy
+joblib
