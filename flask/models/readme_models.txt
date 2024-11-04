@@ -1,0 +1,2 @@
+A set of models is too large to be hosted directly on github, you need to download them using this Google Drive link: https://drive.google.com/file/d/1k1QRKynF41zADehGAOueS-v-rsk6nl0z/view?usp=sharing
+Downloaded .zip file needs to be extracted here, after that you can safely run the Flask application using "flask run" command.
