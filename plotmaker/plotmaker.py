@@ -44,7 +44,7 @@ def denoise(data):
 	return np.fft.ifft(fft_values).real
 
 def load_dataset(datapath, keyfile, do_denoise=False):
-	print("Завантаження датасету...")
+	print("Loading dataset...")
 	sensor_values_list = []
 	labels = []
 	with open(datapath + "/" + keyfile, 'r', encoding='utf-8') as f:
@@ -61,11 +61,11 @@ def load_dataset(datapath, keyfile, do_denoise=False):
 			
 			i += 1
 	
-	print("Готово")
+	print("Done")
 	return np.array(sensor_values_list), np.array(labels)
 
 def load_dataset_labels(datapath, keyfile):
-	print("Завантаження датасету...")
+	print("Loading dataset...")
 	labels = []
 	files = []
 	with open(datapath + "/" + keyfile, 'r', encoding='utf-8') as f:
@@ -76,7 +76,7 @@ def load_dataset_labels(datapath, keyfile):
 			
 			i += 1
 	
-	print("Готово")
+	print("Done")
 	return np.array(labels), np.array(files)
 
 def plot_to_file(datafile, output_file, terminal='png', do_denoise=False):
@@ -123,7 +123,17 @@ def save_balanced_dataset(path, keyfile, X, Y):
 
 if __name__ == "__main__":
 	if len(sys.argv) == 1:
-		print(f"Використання: {sys.argv[0]} <параметри запуску>\nМожливі параметри:\n-path = подати шлях до датасету.\n\t{sys.argv[0]} -path path/to/my/data\n-key = назва файла з ключами(у -path).\n")
+		print(f"""
+Usage: {sys.argv[0]} <parameters>
+Possible parameters:
+	-path = specify path to dataset
+	-key = specify key file name(in -path)
+		{sys.argv[0]} -path path/to/my/data -key \"key.txt\"
+	-o = output path(must be a directory)
+	-b = perform SMOTE-balancing on input dataset
+	-denoise <T> = enable denoise with threshold T, if T is 0, denoise is disabled
+	-gppath = set path to gnuplot(\'gnuplot\' by default)
+		""")
 		exit()
 	
 	else:
@@ -161,11 +171,11 @@ if __name__ == "__main__":
 			i += 1
 		
 		if not datapath or not keyfile:
-			print("Не було надано шлях до датасету або файла з мітками...")
+			print("Path to dataset or key file was not specified...")
 			exit()
 		
 		if not output_dir:
-			print("Не було надано шлях до папки збереження результатів...")
+			print("Output path was not specified...")
 			exit()
 		
 		if not os.path.exists(output_dir):
