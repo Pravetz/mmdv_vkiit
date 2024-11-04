@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CNN and LIME</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-5">
+		<h1 class="mb-4">Vibration data classification using MobileNetV2</h1>
+		<form method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="model">Choose model for classification:</label>
+			<select name="model" class="form-control">
+				<option value="model1">MobileNetV2, full dataset</option>
+				<option value="model2">MobileNetV2, union reduced dataset</option>
+				<option value="model3">MobileNetV2, intersection reduced dataset</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="file">Upload image for classification:</label>
+			<input type="file" name="file" accept=".png, .jpg, .jpeg" required class="form-control">
+		</div>
+		<button type="submit" name="classify" class="btn btn-primary">Classify</button>
+	</form>
+	
+	{% if uploaded_image %}
+	<div class="mt-5">
+		<h2>Classification result</h2>
+		<img src="{{ uploaded_image }}" alt="Uploaded Image" class="img-fluid">
+		<p>Predicted class: {{ prediction }}</p>
+		<p>Model: {{ model_name }}</p>
+	</div>
+	{% endif %}
+	
+	<hr class="my-5">
+	
+	<h1 class="mb-4">LIME explanation</h1>
+	<form method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="lime_model">Choose model for LIME explanation:</label>
+			<select name="lime_model" class="form-control">
+				<option value="gradient_boosting">Gradient Boosting</option>
+				<option value="svm">SVM</option>
+				<option value="random_forest">Random Forest</option>
+				<option value="naive_bayes">Naive Bayes</option>
+				<option value="knn">K-Nearest Neighbors</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="file1">Class 0(Nominal data) sample:</label>
+			<input type="file" name="file1" accept=".txt" required class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="file2">Class 1(Faulted data) sample:</label>
+			<input type="file" name="file2" accept=".txt" required class="form-control">
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" name="filter" value="yes">
+			<label class="form-check-label" for="filter">Only important features</label>
+		</div>
+		<br>
+		<button type="submit" name="explain" class="btn btn-primary">Run LIME</button>
+	</form>
+	
+	{% if lime_explanation %}
+	<div class="mt-5">
+		<h2>LIME explanation plot</h2>
+		<div>{{ lime_explanation | safe }}</div>
+	</div>
+	{% endif %}
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
