@@ -5,6 +5,7 @@ and a Flask web-app, which serves as a "graphical demo" for aforementioned CLI a
 
 # Authors
 **Molchanova M. O.** – PhD student of the Department of Computer Sciences, Khmelnytskyi National University, Khmelnytskyi, Ukraine.
+
 **Didur V. O.** – student of the Department of Computer Sciences, Khmelnytskyi National University, Khmelnytskyi, Ukraine.
 
 # Dependencies
