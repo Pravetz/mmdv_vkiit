@@ -1,7 +1,11 @@
-# mmdv_vkiit
+# APPROACH TO DATA REDUCTION AND DEFECT CLASSIFICATION BASED ON VIBRATION ANALYSIS FOR MAINTENANCE OF ROTATING MACHINERY
 This repository contains a software complex, developed for All-Ukrainian competition-hackathon of scientific works of young scientists in the field of intellectual information technologies in 2024(Всеукраїнський конкурс-хакатон наукових робіт молодих учених в галузі інтелектуальних інформаційних технологій 2024 року).
 It consists of three CLI applications(FTX, NNT and Plotmaker)
 and a Flask web-app, which serves as a "graphical demo" for aforementioned CLI apps, allowing user to classify images using MobileNetV2 models or generate LIME-explanations with important feature filtering for ML classifiers like Random Forest, Naive Bayes etc.
+
+# Authors
+**Molchanova M. O.** – PhD student of the Department of Computer Sciences, Khmelnytskyi National University, Khmelnytskyi, Ukraine.
+**Didur V. O.** – student of the Department of Computer Sciences, Khmelnytskyi National University, Khmelnytskyi, Ukraine.
 
 # Dependencies
 Before using any of these applications, please install required dependencies from `requirements.txt` file using pip: 
